@@ -20,6 +20,7 @@ package android.telephony;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.telephony.MSimTelephonyManager;
 import android.telephony.ServiceState;
@@ -364,7 +365,7 @@ public class PhoneStateListener {
         }
     };
 
-    Handler mHandler = new Handler() {
+    Handler mHandler = new Handler(Looper.getMainLooper()) {
         public void handleMessage(Message msg) {
             //Rlog.d("TelephonyRegistry", "what=0x" + Integer.toHexString(msg.what) + " msg=" + msg);
             switch (msg.what) {
